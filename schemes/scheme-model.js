@@ -18,10 +18,12 @@ function findById(id) {
     .first();
 }
 
-return db("schemes as sc")
+function findSteps(id){
+    return db("schemes as sc")
     .join("steps as s", "s.scheme_id", "sc.id")
     .select("s.id", "s.step_number", "s.instructions", "sc.scheme_name")
     .where("s.scheme_id", id);
+}
 
 function update(changes, id) {
     return db('schemes')
